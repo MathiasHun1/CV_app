@@ -1,6 +1,7 @@
 import './save.scss'
 
-const EditingButtons = () => {
+const EditingButtons = ({data}) => {
+  console.log(data)
   return (
     <div className="editbuttons-container">
       <button>Mentés</button>

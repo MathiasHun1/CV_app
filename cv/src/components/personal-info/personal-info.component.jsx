@@ -1,17 +1,26 @@
 import './personal-info.scss'
 import InputField from '../input-field/inputField.component'
-import { Fragment } from 'react'
 import EditingButtons from '../editButtons/save.component'
 
-const PersonalInfo = () => {
+const PersonalInfo = ({name, email, phone, address, onChange}) => {
   return (
-  
       <div className='personal-info-container'>
-        <InputField inputType={'text'} inputText={'Név'} inputId={'name'} />
-        <InputField inputType={'email'} inputText={'E-mail'} inputId={'email'} />
-        <InputField inputType={'number'} inputText={'Telefon'} inputId={'phone'} />
-        <InputField inputType={'text'} inputText={'Cím'} inputId={'address'} />
-        <EditingButtons/>
+        <div className="input-field">
+          <label htmlFor="name">Név</label>
+          <input type="text" name="name" id="name" value={name} onChange={onChange}/>
+        </div>
+        <div className="input-field">
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" id="email" value={email} onChange={onChange}/>
+        </div>
+        <div className="input-field">
+          <label htmlFor="phone">Telefon</label>
+          <input type="tel" name="phone" id="phone" value={phone} onChange={onChange}/>
+        </div>
+        <div className="input-field">
+          <label htmlFor="address">Címe</label>
+          <input type="text" name="address" id="address" value={address} onChange={onChange}/>
+        </div>
       </div>
   )
 }
