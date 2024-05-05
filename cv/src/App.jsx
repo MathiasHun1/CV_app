@@ -1,61 +1,89 @@
-import { useState, Fragment, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { useState, Fragment } from 'react'
 import './App.scss'
 import FormExpandabe from './components/formExpandable.component'
 import database from './components/database'
 import exampleDatabase from './components/exampleDatabase'
-import ExpandableElement from './components/expandable-element.component'
+import PersonalInformation from './components/PersonalInformation.component'
+import CvPage from './components/cv-page.component'
 
 function App() {
   const [personalData, setPersonalData] = useState(database.personalInfo)
   const [educationData, setEducationData] = useState(database.educationList)
+  const [experienceData, setExperienceData] = useState(database.experienceList)
 
   function loadExampleData() {
     setPersonalData(exampleDatabase.personalInfo)
     setEducationData(exampleDatabase.educationList)
+    setExperienceData(exampleDatabase.experienceList)
+    console.log(experienceData)
   }
-
-  function handleChange(e) {
-    const newPersonalData = JSON.parse(JSON.stringify(personalData))
-    newPersonalData[e.target.id] = e.target.value
-    setPersonalData(newPersonalData)
-  }
-
+ 
   function clearData() {
     const newPersonalData = JSON.parse(JSON.stringify(database.personalInfo))
     setPersonalData(newPersonalData)
     const newEducationData = JSON.parse(JSON.stringify(database.educationList))
     setEducationData(newEducationData)
+    const newExperienceData = JSON.parse(JSON.stringify(database.experienceList))
+    setExperienceData(newExperienceData)
+  }
+  function handleChange(e) {
+    const newPersonalData = JSON.parse(JSON.stringify(personalData))
+    newPersonalData[e.target.id] = e.target.value
+    setPersonalData(newPersonalData)
+  }
+  
+  //functions to modify education data
+  function handleChangeEdu(modifiedSchool) {
+    const array = []
+    educationData.map((school) => {
+      if(school.id === modifiedSchool.id) {
+        array.push(modifiedSchool)
+      } else {
+        array.push(school)
+      }
+    })
+    setEducationData(array)
   }
 
-  let x = 35
+  function handleDeleteEdu(deletedSchool) {
+    const array = []
+    educationData.map((school) => {
+      if(school.id !== deletedSchool.id) {
+        array.push(school)
+      } 
+    })
+    setEducationData(array)
+  }
+
+  function handleAddEdu(newSchool) {
+    const array = educationData.map((school) => ({...school}))
+    array.push(newSchool)
+    setEducationData(array)
+  }
+
+
   return (
     <Fragment>
-      <section className="form-section">
-        <div className='personal-info-form'>
-          <form action="">
-            <label htmlFor="name">Név</label>
-            <input type="text" id='name' onChange={handleChange} value={personalData.name}/>
-            <label htmlFor="email">E-mail</label>
-            <input type="email" id='email' onChange={handleChange} value={personalData.email}/>
-            <label htmlFor="phone">Telefon</label>
-            <input type="tel" id='phone' onChange={handleChange} value={personalData.phone}/>
-            <label htmlFor="address">Lakcím</label>
-            <input type="text" id='address' onChange={handleChange} value={personalData.address}/>
-          </form>
-        </div>
+      <section className="form-section page">
+        <PersonalInformation
+          personalData={personalData}
+          handleChange={handleChange}
+        />
         <FormExpandabe
           id='edu' 
           formName={'Tanulmányok'}
           educationData={educationData}
-          x={x}
+          onChangeEdu={handleChangeEdu}
+          onDeleteEdu={handleDeleteEdu}
+          onAddEdu={handleAddEdu}
         />
-        <FormExpandabe id='exp' formName={'Tapasztalat'}/>
-        <button onClick={loadExampleData}>Példát betölt</button>
-        <button onClick={clearData}>Törlés</button>
+        <div className='global-editing-buttons'>
+          <button className='global-load-button' onClick={loadExampleData}>Példa betöltés</button>
+          <button className='global-delete-button' onClick={clearData}>Adatok törlése</button>
+        </div>
       </section>
-
-      <section className="cv-section">
+      <section className="cv-section page">
+        <CvPage personalData={personalData} educationData={educationData}/>
       </section>
     </Fragment>
   )

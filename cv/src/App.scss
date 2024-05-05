@@ -1,13 +1,27 @@
+:root {
+  --body-backgr: rgba(179, 179, 179, 0.247);
+  --section-backgr: rgb(255, 255, 255);
+  --green: rgb(102, 172, 102);
+  --light-green: rgba(102, 172, 102, 0.158);
+  --red: rgba(248, 18, 18, 0.678);
+  font-family: 'Arial';
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  letter-spacing: 0.5px;
+}
+
+.material-symbols-outlined {
+  font-size: 16px;
 }
 
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(179, 179, 179, 0.466);
+  background-color: var(--body-backgr)
 }
 
 #root {
@@ -22,26 +36,244 @@ body {
 }
 
 .form-section {
-  width: 45%;
+  width: 350px;
+  min-width: 300px;
   height: 100%;
-  border: 2px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+
+  .personal-info-form {
+    width: 100%;
+    min-height: 300px;
+    background-color: var(--section-backgr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 15px;
+
+    h3 {
+      margin-bottom: 2rem;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    input {
+      font-size: 16px;
+      padding: 2px;
+      border: none;
+      outline: none;
+      border-bottom: 2px solid rgb(102, 172, 102);
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+   
+  }
+
+  .form-expandable {
+    background-color: var(--section-backgr);
+    width: 100%;
+    padding: 2rem 4rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-expandable-header {
+      text-align: center;
+      position: relative;
+
+      .expand-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 24px;
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      .add-school-button {
+        padding: 3px;
+        background-color: var(--green);
+        cursor: pointer;
+        overflow: visible;
+        align-self: center;      
+      }
+    }
+
+
+    .form-expandable-content {
+      // display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in 0.4s;
+      
+
+      .school-header {
+        display: inline-block;
+        padding: 5px;
+
+        .school-icon {
+          margin-right: 6px;
+        }
+
+        .edit-icon {
+          visibility: hidden;
+        }
+      }
+
+      .school-header:hover {
+        cursor: pointer;
+        .edit-icon {
+          visibility: visible;
+        }
+      }
+
+      .school-header.open {
+        display: none;
+      }
+    }
+    .school-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+
+      label {
+        font-weight: bold;
+        margin-bottom: 1px;
+      }
+
+      input {
+        padding: 4px;
+        padding-left: 10px;
+        margin-bottom: 6px;
+        font-size: 15px;
+        border-radius: 15px;
+        border: none;
+        background-color: var(--body-backgr);
+        outline: none;
+      }
+
+      .editbuttons-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 10px;
+
+        button {
+          background-color: white;
+          border: none;
+          span {
+            padding: 3px;
+            font-weight: 280;
+            font-size: 24px;
+          }
+        }
+        .save-button:hover {
+          background-color: var(--green);
+        }
+  
+        .delete-button:hover {
+          background-color: var(--red);
+        }
+      }
+
+
+    }
+     .expanded {
+       max-height: 500px;
+     }
+     
+     
+     .school-closed {
+       font-size: large;
+       margin: 3rem;
+     }
+     
+     .hidden {
+       display: none;
+     }
+
+     button {
+      align-self: center;
+     }
+  }
+
+  .global-editing-buttons {
+    width: 200px;
+    background-color: var(--section-backgr);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 4px;
+
+    button {
+      width: 65px;
+      padding: 5px;
+    }
+  }
 }
 
 .cv-section {
   width: 45%;
+  min-width: 600px;
   height: 100%;
-  border: 2px solid;
+  background-color: var(--section-backgr);
+
+  .cv-header {
+    min-height: 130px;
+    background-color: var(--green);
+    padding: 1rem;
+    position: relative;
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    div {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+    }
+  }
+
+
+
+  .cv-body {
+    padding: 1rem;
+    .cv-edu-section {
+      h3 {
+        border-bottom: 2px solid;
+      }
+
+      .cv-school-element {
+        margin: 1rem 0;
+        padding: 10px;
+        background-color: var(--light-green);
+        i {
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
-.personal-info-form {
-  width: 80%;
-  height: 400px;
-  border: 2px solid;
-}
 
 label {
   display: block;

@@ -9,25 +9,25 @@ const exampleDatabase = {
   },
   educationList: [
     {
-      id: '',
       schoolName: 'Elte',
-      degree: 'pocok életmód kutató mérnök',
-      endTime: '2024'
+      degree: 'Kukorica hámozó szakasszisztens',
+      endTime: '2024',
+      id: 0
     },
     {
-      id: '',
-      schoolName: 'Deák Ferenc Technikum',
-      degree: 'Kukorica hámozó szakasszisztens',
-      endTime: '1988'
+      schoolName: 'BME-PPK',
+      degree: 'Járműmérnök',
+      endTime: '1999',
+      id: 1
     }
 
   ],
   experienceList: [
     {
-      id: '',
+      id: 1,
       companyName: 'Kovács és Társa ZRT',
-      position: 'Vezető kutató',
-      startDate: '1999.01.01',
+      position: 'Igazgató helyettes',
+      startDate: '1999.11.01',
       endDate: '2020.02.12',
       description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus vitae incidunt est, a dicta nobis exercitationem minima odio dolor ipsum veritatis eaque inventore iste temporibus accusantium quo ipsa nisi blanditiis.'
     }
