@@ -3,7 +3,7 @@ import { Fragment, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 
 export default function ExpSection({data, hasFormOpen, onSaveExpForm, onOpenExpForm, onDelExpForm, onAddExpForm}) {
-  const [isExpanded, setIsExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(false)
   const [isNotAddingNew, setIsNotAddingNew] = useState(true)
 
   const emptyFormData = {

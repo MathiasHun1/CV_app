@@ -9,7 +9,7 @@ export default function CvOutput({ personalInfo, educationList, experienceList }
     <>
       <header className="cv-header">
         <h1>{personalInfo.name}</h1>
-        <img src={profileImgUrl} alt="load image here" />
+        <img src='' alt="load image here" />
         <div className="ouput-info-cont">
           <p>{personalInfo.email}</p>
           <p>{personalInfo.phone}</p>
