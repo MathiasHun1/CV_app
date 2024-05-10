@@ -1,0 +1,258 @@
+:root {
+  --grey: rgba(179, 179, 179, 0.164);
+  --white: rgb(255, 255, 255);
+  --green: rgba(109, 165, 109, 0.651);
+  --light-green: rgba(102, 172, 102, 0.158);
+  --red: rgba(248, 18, 18, 0.678);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--grey);
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input-section {
+  width: 350px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  //Person info 
+  .person-form-container {
+    height: fit-content;
+    padding-bottom: 2rem;
+    h3 {
+      text-align: center;
+    }
+  }
+
+  //Expandable
+  .expandable-form {
+
+    .expand-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .expand-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 0;
+      overflow: hidden;
+      transition: height 2s, padding 2s;
+    }
+    
+    .expanded {
+      height: 250px;
+      max-height: 500px;
+      overflow: auto;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+
+    .formname-button {
+      display: block;
+      width: 100%;
+      background-color: var(--white);
+      border: none;
+      border-top: 4px solid var(--grey);
+      border-bottom: 4px solid var(--grey);
+      padding: 1rem;
+      border-collapse: collapse;
+      transition: background-color 0.5s;
+    }
+
+    .formname-button:hover {
+      cursor: pointer;
+      background-color: rgba(168, 168, 168, 0.4);
+    }
+
+    .formname-button:first-child {
+      margin-top: 10px;
+    }
+
+    .formname-button:not(:first-child) {
+      margin-top: -4px;
+    }
+
+    .add-new-button {
+      bottom: 1rem;
+      // background-color: var(--grey);
+      justify-self:left;
+      margin-top: 10px;
+    }
+  }
+}
+
+//General styles
+.output-section {
+  width: 700px;
+  height: 100vh;
+  border: 1px solid;
+}
+
+.inputform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding-top: 1rem;
+
+  label>p {
+    font-weight: bold;
+  }
+
+  input {
+    padding: 4px 10px;
+    background-color: var(--grey);
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    transition: border 0.25s, box-shadow 0.25s;
+
+  }
+
+  input:focus {
+    border-color: rgba(50, 50, 250, 0.637);
+    outline: none;
+    box-shadow: 0px 3px 15px rgba(59, 131, 246, 0.2);
+  }
+
+}
+
+.inputform-cont {
+  background-color: var(--white);
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+
+  p {
+    margin-bottom: 2px;
+  }
+}
+
+.inputform-buttons-cont {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 1rem;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    padding: 3px;
+
+    span {
+      font-weight: 250;
+      font-size: 20px;
+    }
+  }
+}
+
+.general-button {
+  padding: 4px;
+  width: 80px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.general-button:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.globalbutton-cont {
+  background-color: var(--white);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+
+}
+
+.globalbutton {
+  width: 120px;
+  height: 35px;
+}
+
+
+
+//////////////////////////
+////// CV OUTPUT  ///////
+
+.output-section {
+  background-color: var(--white);
+}
+
+.cv-header {
+  background-color: var(--green);
+  padding: 1rem;
+  position: relative;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .output-info-cont {
+
+  }
+
+  img {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.cv-main {
+  background-color: var(--white);
+  padding: 1rem 1rem;
+  
+  h2 {
+    text-align: center;
+  }
+
+  .output-element-cont {
+    background-color: var(--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .item-name, .item-text {
+    display: inline;
+  }
+}
